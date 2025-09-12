@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Contoh DOM</title>
+</head>
+<body>
+  <h1>Contoh Penggunaan DOM</h1>
+  <h2 id="judul">Halo, ini judul sebelum berubah</h2>
+  <p class="teks">DOM merupakan singkatan dari Document Object Model.<br>
+                  Artinya, dokumen (HTML) yang dimodelkan dalam sebuah objek.<br>
+                  Objek dari dokumen ini menyediakan sekumpulan fungsi dan atribut/data yang bisa kita manfaatkan dalam membuat program Javascript.</p>
+  <p class="teks">Objek DOM di javascript bernama document. Objek ini berisi segala hal yang kita butuhkan untuk memanipulasi HTML.<br>
+                  Di dalam objek document, terdapat fungsi-fungsi dan atribut yang bisa kita gunakan untuk memanipulasi dokumen HTML.</p>
+  <button id="tombol">Klik untuk ubah judul</button>
+  
+<p>Sumber: <a href="https://www.petanikode.com/javascript-dom/">Petani Kode</a></p>
+
+  <script>
+    // untuk memilih elemen berdasarkan atribut id.
+    // Mengakses elemen dengan ID
+    let judul = document.getElementById("judul");
+    console.log("Elemen dengan ID:", judul.innerText);
+
+    // untuk memilih elemen berdasarkan atribut class.
+    // Mengakses elemen dengan class
+    let paragraf = document.getElementsByClassName("teks");
+    console.log("Elemen dengan Class:", paragraf[0].innerText);
+
+    // untuk memilih elemen berdasarkan nama tag.
+    // Mengakses elemen dengan tag
+    let semuaP = document.getElementsByTagName("p");
+    console.log("Jumlah <p>:", semuaP.length);
+
+    //  untuk memilih elemen berdasarkan query/permintaan/pencarian.
+    // Mengakses elemen dengan querySelector
+    let pertama = document.querySelector(".teks");
+    console.log("QuerySelector pertama:", pertama.innerText);
+
+    //  untuk memilih elemen berdasarkan query/permintaan/pencarian.
+    // Mengakses elemen dengan querySelectorAll
+    let semua = document.querySelectorAll(".teks");
+    semua.forEach((el, i) => {
+      console.log(`Paragraf ke-${i+1}:`, el.innerText);
+    });
+
+    // Event untuk membuat elemen merespons suatu kejadian, misalnya klik.
+    // Event untuk ubah teks judul
+    document.getElementById("tombol").addEventListener("click", function() {
+      judul.innerText = "Judul sudah berubah yang baru!";
+    });
+  </script>
+</body>
+</html>
