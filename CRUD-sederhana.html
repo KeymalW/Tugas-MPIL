@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD JS Sederhana</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background: #f9f9f9;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            margin-top: 10px;
+        }
+
+        button {
+            cursor: pointer;
+            background: #eee;
+            border: 1px solid #ccc;
+        }
+
+        .edit {
+            color: orange;
+        }
+
+        .hapus {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>CRUD JS Sederhana</h3>
+
+    <input id="nama">
+    <button onclick="simpan()">Simpan</button>
+
+    <ul id="list"></ul>
+
+    <script>
+        let data = [];
+        let edit = null;
+
+        function tampil() {
+            list.innerHTML = "";
+            data.forEach((n, i) => {
+                list.innerHTML += `
+      <li>
+        ${n}
+        <button onclick="ubah(${i})">Edit</button>
+        <button onclick="hapus(${i})">Hapus</button>
+      </li>`;
+            });
+        }
+
+        function simpan() {
+            if (edit === null) data.push(nama.value);
+            else { data[edit] = nama.value; edit = null; }
+            nama.value = "";
+            tampil();
+        }
+
+        function ubah(i) {
+            nama.value = data[i];
+            edit = i;
+        }
+
+        function hapus(i) {
+            data.splice(i, 1);
+            tampil();
+        }
+    </script>
+
+</body>
+
+</html>
